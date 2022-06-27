@@ -1,21 +1,21 @@
-#Generator Excercises
+import itertools
 
-#Problem 1
-#Create a generator, primes_gen that generates prime numbers starting from 2.
 
-gen = primes_gen()
-for _ in range(10):
-    print(next(gen), end=' ')
-# Expected output
-# 2 3 5 7 11 13 17 19 23 29
-#----------------------------------------------------------------------------
+def prime_numbers():
+    yield 2  # start no
+    prime_cache = [2]  # cache user to catch all thew prime nos
+    for n in itertools.count(3, 2):
+        is_prime = True
+        for p in prime_cache:
+            if n % p == 0:
+                is_prime = False
+                break
+        if is_prime:
+            prime_cache.append(n)
+            yield n
 
-#Problem 2
-#Create a generator, unique_letters that generates unique letters from
-#the input string. It should generate the letters in the same order as
-#from the input string.
 
-for letter in unique_letters('hello'):
-    print(letter, end=' ')
-# Expected output
-# h e l o
+for p in prime_numbers():
+    print(p)
+    if p > 30:
+        break
