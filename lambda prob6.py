@@ -1,0 +1,1 @@
+print((','.join(map(lambda x : x[0],prog_lang)),','.join(map(lambda x: str(x[1]), prog_lang))))
